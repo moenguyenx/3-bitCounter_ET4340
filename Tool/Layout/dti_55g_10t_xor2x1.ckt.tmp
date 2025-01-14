@@ -1,0 +1,19 @@
+.subckt dti_gen_inv$1  VDD VSS A Z
+m1i3 Z A VDD VDD  pch l=0.06u w=0.525u
+m1i4 Z A VSS VSS  nch l=0.06u w=0.525u
+.ends
+
+.subckt dti_gen_tx$1  VDD VSS PG NG IN OUT
+m1i3 IN PG OUT VDD  pch l=0.06u w=0.525u
+m1i2 IN NG OUT VSS  nch l=0.06u w=0.525u
+.ends
+
+.subckt dti_55g_10t_xor2x1 VDD VSS B Z A
+x1i55 VDD VSS A N1N56  dti_gen_inv$1 
+x1i62 VDD VSS N1N56 N1N58  dti_gen_inv$1 
+x1i57 VDD VSS N1N27 Z  dti_gen_inv$1 
+x1i63 VDD VSS B N1N23  dti_gen_inv$1 
+x1i61 VDD VSS N1N23 B N1N58 N1N27  dti_gen_tx$1 
+x1i15 VDD VSS B N1N23 N1N56 N1N27  dti_gen_tx$1 
+.ends
+

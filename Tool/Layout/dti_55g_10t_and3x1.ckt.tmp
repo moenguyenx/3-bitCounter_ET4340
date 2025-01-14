@@ -1,0 +1,11 @@
+.subckt dti_55g_10t_and3x1 VDD VSS C Z A B
+mp4 N1N47 C VDD VDD  pch l=0.06u w=0.735u
+mp2 N1N47 A VDD VDD  pch l=0.06u w=0.735u
+mp1 Z N1N47 VDD VDD  pch l=0.06u w=0.735u
+mn1 Z N1N47 VSS VSS  nch l=0.06u w=0.525u
+mp3 N1N47 B VDD VDD  pch l=0.06u w=0.735u
+mn2 N1N47 A N1N43 VSS  nch l=0.06u w=0.525u
+mn3 N1N43 B N1N71 VSS  nch l=0.06u w=0.525u
+mn4 N1N71 C VSS VSS  nch l=0.06u w=0.525u
+.ends
+

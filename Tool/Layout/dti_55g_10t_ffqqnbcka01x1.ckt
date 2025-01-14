@@ -1,0 +1,65 @@
+*##########################################################################################
+* Copyright (c) 2023 Dolphin Technology, Inc.
+* This netlist is proprietary and confidential information of
+* Dolphin Technology, Inc. and can only be used or viewed
+* under license or with written permission from Dolphin Technology, Inc.
+*##########################################################################################
+* /data/projects/stdcells/scripts_svn_update_flow/Update_property_flow/lvsNetlist.pl -c dti_55g_10t_ffqqnbcka01x1 -p /data/projects/stdcells/scripts_svn_update_flow/Update_property_flow/params/params55.sp -s netlist -d lvs -nglob
+* dt35-linux:/data/projects/stdcells/REPOSITORY_RV003/ckt/tsmc55 
+* dti_55g_10t_ffqqnbcka01x1.ckt generated on 6/2/2023 at 18:15:5
+*##########################################################################################
+* Dependencies
+*##########################################################################################
+
+.param wnd=1u wpd=1u
+
+.option scale=1
+
+.global vdd vss vddps vddcs
+* DAMN, don't know where the cell is 
+.subckt dti_55g_10t_ffqqnbcka01x1 VDD VSS D CK Q RN QN
+mpmos_fbck1 SL CK1 N1N590 VDD pch l=0.06u w=0.15u
+mpmos_fbrsb N1N590 RSB N1N499 VDD pch l=0.06u w=0.15u
+xinv_q VDD VSS RSB Q dti_gen_inv wn=0.525u wp=0.525u
+xinv_qn VDD VSS SL QN dti_gen_inv wn=0.525u wp=0.525u
+mnmos_fbckb SL CKB N1N532 VSS nch l=0.06u w=0.15u
+xtx_sl VDD VSS CKB CK1 RM SL dti_gen_tx wn=0.525u wp=0.525u
+xinv_ckb VDD VSS CKB CK1 dti_gen_inv wn=0.15u wp=0.15u
+xinv_ck VDD VSS CK CKB dti_gen_inv wn=0.525u wp=0.525u
+mpmos_fbrm N1N558 RM VDD VDD pch l=0.06u w=0.15u
+mpmos_fbckb MLB CKB N1N558 VDD pch l=0.06u w=0.15u
+mnmos_fbck1 MLB CK1 N1N287 VSS nch l=0.06u w=0.15u
+mnmos_fbrm N1N287 RM VSS VSS nch l=0.06u w=0.15u
+xinv_rn VDD VSS RN RNB dti_gen_inv wn=0.15u wp=0.15u
+mnmos_rnb N1N532 RNB VSS VSS nch l=0.06u w=0.15u
+mnmos_fbrsb N1N532 RSB VSS VSS nch l=0.06u w=0.15u
+mpmos_rnb N1N499 RNB VDD VDD pch l=0.06u w=0.15u
+mpmos_d MLB D N1N525 VDD pch l=0.06u w=0.735u m=2
+xnor2_rm VDD VSS MLB RNB RM dti_gen_nor2p wn1=0.735u wn2=0.735u wp1=0.735u
++ wp2=0.735u
+xinv_sl VDD VSS SL RSB dti_gen_inv wn=0.525u wp=0.525u
+mnmos_d MLB D N1N515 VSS nch l=0.06u w=0.525u
+mnmos_ckb N1N515 CKB VSS VSS nch l=0.06u w=0.525u
+mpmos_ck1 N1N525 CK1 VDD VDD pch l=0.06u w=0.735u
+.ends
+
+* DAMN, don't know where the cell is 
+.subckt dti_gen_inv VDD VSS A Z
+m1i3 Z A VDD VDD pch l=0.06u w=0.15u
+m1i4 Z A VSS VSS nch l=0.06u w=0.15u
+.ends
+
+* DAMN, don't know where the cell is 
+.subckt dti_gen_nor2p VDD VSS A B Z
+mp1 N1N29 B VDD VDD pch l=0.06u w=0.15u
+mp2 Z A N1N29 VDD pch l=0.06u w=0.15u
+mn2 Z A VSS VSS nch l=0.06u w=0.15u
+mn1 Z B VSS VSS nch l=0.06u w=0.15u
+.ends
+
+* DAMN, don't know where the cell is 
+.subckt dti_gen_tx VDD VSS PG NG IN OUT
+m1i3 IN PG OUT VDD pch l=0.06u w=0.15u
+m1i2 IN NG OUT VSS nch l=0.06u w=0.15u
+.ends
+

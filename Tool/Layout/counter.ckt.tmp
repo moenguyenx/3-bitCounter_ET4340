@@ -1,0 +1,139 @@
+.subckt dti_gen_inv$1 VDD VSS A Z
+m1i3 Z A VDD VDD  pch l=0.06u w=0.15u
+m1i4 Z A VSS VSS  nch l=0.06u w=0.15u
+.ends
+
+.subckt dti_gen_tx$1 VDD VSS PG NG IN OUT
+m1i3 IN PG OUT VDD  pch l=0.06u w=0.15u
+m1i2 IN NG OUT VSS  nch l=0.06u w=0.15u
+.ends
+
+.subckt dti_gen_inv$2 VDD VSS A Z
+m1i3 Z A VDD VDD  pch l=0.06u w=0.15u
+m1i4 Z A VSS VSS  nch l=0.06u w=0.15u
+.ends
+
+.subckt counter vdd vss clk reset_n count_to[2] count_to[1] count_to[0] load count_en done 
+x20_ VDD VSS _02_ count[0]  dti_55g_10t_invx1 
+x21_ VDD VSS _03_ load  dti_55g_10t_invx1 
+x22_ VDD VSS _04_ done  dti_55g_10t_invx1 
+x23_ VDD VSS count_en _04_ _05_  dti_55g_10t_nand2x1 
+x24_ VDD VSS count_en _02_ _04_ _06_  dti_55g_10t_nand3x1 
+x25_ VDD VSS _05_ count[0] _07_  dti_55g_10t_nand2x1 
+x26_ VDD VSS count_to[0] _03_ _08_  dti_55g_10t_nor2x1 
+x27_ VDD VSS _07_ _09_ _03_ _06_  dti_55g_10t_and3x1 
+x28_ VDD VSS _08_ _09_ count_next[0]  dti_55g_10t_nor2x1 
+x29_ VDD VSS _10_ count[1] _06_  dti_55g_10t_or2x1 
+x30_ VDD VSS _06_ _11_ count[1]  dti_55g_10t_xor2x1 
+x31_ VDD VSS _12_ load _11_  dti_55g_10t_or2x1 
+x32_ VDD VSS count_to[1] load _13_  dti_55g_10t_nand2x1 
+x33_ VDD VSS _13_ _12_ count_next[1]  dti_55g_10t_nand2x1 
+x34_ VDD VSS _10_ _14_ _01_  dti_55g_10t_xor2x1 
+x35_ VDD VSS _14_ _03_ _15_  dti_55g_10t_nand2x1 
+x36_ VDD VSS count_to[2] load _16_  dti_55g_10t_nand2x1 
+x37_ VDD VSS _16_ _15_ count_next[2]  dti_55g_10t_nand2x1 
+x38_ VDD VSS count_next[2] count_next[0] count_next[1] _00_  dti_55g_10t_nor3x1 
+x39_ VDD VSS _00_ clk done reset_n _17_  dti_55g_10t_ffqqnbcka01x1 
+x40_ VDD VSS count_next[0] clk count[0] reset_n _18_  dti_55g_10t_ffqqnbcka01x1 
+x41_ VDD VSS count_next[1] clk count[1] reset_n _19_  dti_55g_10t_ffqqnbcka01x1 
+x42_ VDD VSS count_next[2] clk count[2] reset_n _01_  dti_55g_10t_ffqqnbcka01x1 
+.ends
+
+.subckt dti_55g_10t_nand3x1 VDD VSS C A B Z
+mp3 Z C VDD VDD  pch l=0.06u w=0.735u
+mp1 Z A VDD VDD  pch l=0.06u w=0.735u
+mp2 Z B VDD VDD  pch l=0.06u w=0.735u
+mn1 Z A N1N43 VSS  nch l=0.06u w=0.525u
+mn2 N1N43 B N1N71 VSS  nch l=0.06u w=0.525u
+mn3 N1N71 C VSS VSS  nch l=0.06u w=0.525u
+.ends
+
+.subckt dti_55g_10t_nor2x1 VDD VSS A B Z
+mp1 Z A N1N71 VDD  pch l=0.06u w=0.735u
+mn1 Z A VSS VSS  nch l=0.06u w=0.525u
+mn2 Z B VSS VSS  nch l=0.06u w=0.525u
+mp2 N1N71 B VDD VDD  pch l=0.06u w=0.735u
+.ends
+
+.subckt dti_55g_10t_nor3x1 VDD VSS C A B Z
+mn3 Z C VSS VSS  nch l=0.06u w=0.525u
+mp1 Z A N1N71 VDD  pch l=0.06u w=0.735u
+mn1 Z A VSS VSS  nch l=0.06u w=0.525u
+mn2 Z B VSS VSS  nch l=0.06u w=0.525u
+mp2 N1N71 B N1N85 VDD  pch l=0.06u w=0.735u
+mp3 N1N85 C VDD VDD  pch l=0.06u w=0.735u
+.ends
+
+.subckt dti_55g_10t_xor2x1 VDD VSS B Z A
+x1i55 VDD VSS A N1N56  dti_gen_inv$1 
+x1i62 VDD VSS N1N56 N1N58  dti_gen_inv$1 
+x1i57 VDD VSS N1N27 Z  dti_gen_inv$1 
+x1i63 VDD VSS B N1N23  dti_gen_inv$1 
+x1i61 VDD VSS N1N23 B N1N58 N1N27  dti_gen_tx$1 
+x1i15 VDD VSS B N1N23 N1N56 N1N27  dti_gen_tx$1 
+.ends
+
+.subckt dti_55g_10t_and3x1 VDD VSS C Z A B
+mp4 N1N47 C VDD VDD  pch l=0.06u w=0.735u
+mp2 N1N47 A VDD VDD  pch l=0.06u w=0.735u
+mp1 Z N1N47 VDD VDD  pch l=0.06u w=0.735u
+mn1 Z N1N47 VSS VSS  nch l=0.06u w=0.525u
+mp3 N1N47 B VDD VDD  pch l=0.06u w=0.735u
+mn2 N1N47 A N1N43 VSS  nch l=0.06u w=0.525u
+mn3 N1N43 B N1N71 VSS  nch l=0.06u w=0.525u
+mn4 N1N71 C VSS VSS  nch l=0.06u w=0.525u
+.ends
+
+.subckt dti_55g_10t_ffqqnbcka01x1 VDD VSS D CK Q RN QN
+mpmos_fbck1 SL CK1 N1N590 VDD  pch l=0.06u w=0.15u
+mpmos_fbrsb N1N590 RSB N1N499 VDD  pch l=0.06u w=0.15u
+xinv_q VDD VSS RSB Q  dti_gen_inv$1 
+xinv_qn VDD VSS SL QN  dti_gen_inv$1 
+mnmos_fbckb SL CKB N1N532 VSS  nch l=0.06u w=0.15u
+xtx_sl VDD VSS CKB CK1 RM SL  dti_gen_tx$1 
+xinv_ckb VDD VSS CKB CK1  dti_gen_inv$2 
+xinv_ck VDD VSS CK CKB  dti_gen_inv$1 
+mpmos_fbrm N1N558 RM VDD VDD  pch l=0.06u w=0.15u
+mpmos_fbckb MLB CKB N1N558 VDD  pch l=0.06u w=0.15u
+mnmos_fbck1 MLB CK1 N1N287 VSS  nch l=0.06u w=0.15u
+mnmos_fbrm N1N287 RM VSS VSS  nch l=0.06u w=0.15u
+xinv_rn VDD VSS RN RNB  dti_gen_inv$2 
+mnmos_rnb N1N532 RNB VSS VSS  nch l=0.06u w=0.15u
+mnmos_fbrsb N1N532 RSB VSS VSS  nch l=0.06u w=0.15u
+mpmos_rnb N1N499 RNB VDD VDD  pch l=0.06u w=0.15u
+mpmos_d MLB D N1N525 VDD  pch l=0.06u w=0.735u m=2
+xnor2_rm VDD VSS MLB RNB RM dti_gen_nor2p wn1=0.735u wn2=0.735u wp1=0.735u  wp2=0.735u 
+xinv_sl VDD VSS SL RSB  dti_gen_inv$1 
+mnmos_d MLB D N1N515 VSS  nch l=0.06u w=0.525u
+mnmos_ckb N1N515 CKB VSS VSS  nch l=0.06u w=0.525u
+mpmos_ck1 N1N525 CK1 VDD VDD  pch l=0.06u w=0.735u
+.ends
+
+.subckt dti_gen_nor2p VDD VSS A B Z
+mp1 N1N29 B VDD VDD  pch l=0.06u w=0.15u
+mp2 Z A N1N29 VDD  pch l=0.06u w=0.15u
+mn2 Z A VSS VSS  nch l=0.06u w=0.15u
+mn1 Z B VSS VSS  nch l=0.06u w=0.15u
+.ends
+
+.subckt dti_55g_10t_invx1 VDD VSS Z A
+mn1 Z A VSS VSS  nch l=0.06u w=0.525u
+mp1 Z A VDD VDD  pch l=0.06u w=0.735u
+.ends
+
+.subckt dti_55g_10t_or2x1 VDD VSS Z A B
+mp2 N1N47 A N1N71 VDD  pch l=0.06u w=0.735u
+mp1 Z N1N47 VDD VDD  pch l=0.06u w=0.735u
+mn1 Z N1N47 VSS VSS  nch l=0.06u w=0.525u
+mn2 N1N47 A VSS VSS  nch l=0.06u w=0.525u
+mp3 N1N71 B VDD VDD  pch l=0.06u w=0.735u
+mn3 N1N47 B VSS VSS  nch l=0.06u w=0.525u
+.ends
+
+.subckt dti_55g_10t_nand2x1 VDD VSS B A Z
+mp1 Z A VDD VDD  pch l=0.06u w=0.735u
+mp2 Z B VDD VDD  pch l=0.06u w=0.735u
+mn2 N1N43 B VSS VSS  nch l=0.06u w=0.525u
+mn1 Z A N1N43 VSS  nch l=0.06u w=0.525u
+.ends
+

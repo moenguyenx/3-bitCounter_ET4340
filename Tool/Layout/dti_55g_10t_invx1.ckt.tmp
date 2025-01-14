@@ -1,0 +1,5 @@
+.subckt dti_55g_10t_invx1 VDD VSS Z A
+mn1 Z A VSS VSS  nch l=0.06u w=0.525u
+mp1 Z A VDD VDD  pch l=0.06u w=0.735u
+.ends
+

@@ -1,0 +1,24 @@
+*##########################################################################################
+* Copyright (c) 2023 Dolphin Technology, Inc.
+* This netlist is proprietary and confidential information of
+* Dolphin Technology, Inc. and can only be used or viewed
+* under license or with written permission from Dolphin Technology, Inc.
+*##########################################################################################
+* /data/projects/stdcells/scripts_svn_update_flow/Update_property_flow/lvsNetlist.pl -c dti_55g_10t_invx1 -p /data/projects/stdcells/scripts_svn_update_flow/Update_property_flow/params/params55.sp -s netlist -d lvs -nglob
+* dt35-linux:/data/projects/stdcells/REPOSITORY_RV003/ckt/tsmc55 
+* dti_55g_10t_invx1.ckt generated on 6/2/2023 at 18:35:53
+*##########################################################################################
+* Dependencies
+*##########################################################################################
+
+.param wnd=1u wpd=1u
+
+.option scale=1
+
+.global vdd vss vddps vddcs
+* DAMN, don't know where the cell is 
+.subckt dti_55g_10t_invx1 VDD VSS Z A
+mn1 Z A VSS VSS nch l=0.06u w=0.525u
+mp1 Z A VDD VDD pch l=0.06u w=0.735u
+.ends
+

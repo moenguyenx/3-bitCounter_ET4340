@@ -1,0 +1,32 @@
+PROPERTY ERROR
+-----------------------------------------------------------------------------------------------------------------------------
+$7    (-0.455,0.785)       NCH_MAC                      (0.14 vs 0.15)                       NMOS_CLKNB           NCH                 
+$8    (-0.265,0.785)       NCH_MAC                      (0.14 vs 0.15)                       NMOS_FBRM            NCH                 
+$15   (1.46,0.667)         NCH_MAC                      (0.375 vs 0.15)                      NMOS_CLKN            NCH                 
+$16   (2.115,0.785)        NCH_MAC                      (0.14 vs 0.15)                       NMOS_RNB             NCH                 
+$3    (-1.815,0.567)       NCH_MAC                      (0.95 vs 1.05)                       NMOS_CLKN_1          NCH                 
+$4    (-1.62,0.567)        NCH_MAC                      (0.95 vs 1.05)                       NMOS_D               NCH                 
+$13   (0.915,0.602)        NCH_MAC                      (0.505 vs 0.15)                      NOR2_RM.N2           NCH                 
+$12   (0.63,0.602)         NCH_MAC                      (0.505 vs 0.15)                      NOR2_RM.N1           NCH                 
+$14   (1.175,0.602)        NCH_MAC                      (0.505 vs 0.15)                      TX_SL.1I2            NCH                 
+$9    (0.105,0.777)        NCH_MAC                      (0.155 vs 0.15)                      INV_RN.1I4           NCH                 
+$1    (-0.455,0.4)         NCH_MAC                      (0.51 vs 0.15)                       INV_CLKNB.1I4        NCH                 
+$20   (3.67,0.592)         NCH_MAC                      (0.525 vs 0.15)                      INV_Q.1I4            NCH                 
+$17   (2.885,0.592)        NCH_MAC                      (0.525 vs 0.15)                      INV_QN.1I4           NCH                 
+$18   (3.145,0.592)        NCH_MAC                      (1.05 vs 0.15)                       INV_SL.1I4           NCH                 
+$28   (-0.085,1.832)       PCH_MAC                      (0.155 vs 0.15)                      PMOS_FBRM            PCH                 
+$27   (-0.36,1.832)        PCH_MAC                      (0.155 vs 0.15)                      PMOS_CLKN            PCH                 
+$34   (1.95,1.832)         PCH_MAC                      (0.155 vs 0.15)                      PMOS_RNB             PCH                 
+$33   (1.61,1.832)         PCH_MAC                      (0.155 vs 0.15)                      PMOS_FBRSB           PCH                 
+$32   (1.4,1.832)          PCH_MAC                      (0.155 vs 0.15)                      PMOS_CLKNB           PCH                 
+$23   (-1.62,1.615)        PCH_MAC                      (1.18 vs 1.47)                       PMOS_D               PCH                 
+$22   (-1.81,1.615)        PCH_MAC                      (1.18 vs 1.47)                       PMOS_CLKNB_1         PCH                 
+$29   (0.595,1.542)        PCH_MAC                      (0.735 vs 0.15)                      NOR2_RM.P1           PCH                 
+$30   (0.81,1.542)         PCH_MAC                      (0.735 vs 0.15)                      NOR2_RM.P2           PCH                 
+$31   (1.08,1.647)         PCH_MAC                      (0.525 vs 0.15)                      TX_SL.1I3            PCH                 
+$35   (2.38,1.542)         PCH_MAC                      (0.735 vs 0.15)                      INV_CKN.1I3          PCH                 
+$26   (0.205,1.252)        PCH_MAC                      (0.155 vs 0.15)                      INV_RN.1I3           PCH                 
+$21   (-0.885,1.4)         PCH_MAC                      (0.16 vs 0.15)                       INV_CLKNB.1I3        PCH                 
+$39   (3.67,1.542)         PCH_MAC                      (0.735 vs 0.15)                      INV_Q.1I3            PCH                 
+$36   (2.885,1.542)        PCH_MAC                      (0.735 vs 0.15)                      INV_QN.1I3           PCH                 
+$37   (3.145,1.542)        PCH_MAC                      (1.47 vs 0.15)                       INV_SL.1I3           PCH                 
