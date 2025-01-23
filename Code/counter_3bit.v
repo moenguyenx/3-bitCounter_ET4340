@@ -1,11 +1,11 @@
 module Counter (
-  input clk,
-  input reset_n,
-  input [2:0] count_to,
-  input load,
-  input count_en,
-  output reg done,
-  output reg [2:0] count
+  input clk,                  // Tín hiệu xung nhịp (clock)
+  input reset_n,              // Tín hiệu reset chủ động mức thấp (active-low reset)
+  input [2:0] count_to,       // Giá trị đích cần nạp vào bộ đếm (3-bit)
+  input load,                 // Tín hiệu nạp giá trị mới vào bộ đếm
+  input count_en,             // Tín hiệu cho phép đếm
+  output reg done,            // Tín hiệu báo hoàn thành đếm (1 khi count = 0)
+  output reg [2:0] count      // Giá trị hiện tại của bộ đếm (3-bit)
 );
 
   reg [2:0] next_count;
